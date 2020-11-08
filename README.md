@@ -16,6 +16,7 @@ FL1 - IncroyableMec
           - Go inside the folder 'smoothit'
           - Enter the command line ```flutter emulators``` and copy the id of the emulator you want to launch
           - Launch the app by doing ```flutter emulators --launch <emulator id>``` and replace <emulator id> by the id just copied
+          - Finally, run the command ```flutter run```
 
       * VSCode
 
