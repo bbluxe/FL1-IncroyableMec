@@ -42,7 +42,7 @@ class _BodyState extends State<Body> {
           Container(
             width: 150,
             child: RaisedButton(
-                child: const Text('Mixer',
+                child: const Text('Mix',
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 color: kPrimaryColor,
                 shape: RoundedRectangleBorder(

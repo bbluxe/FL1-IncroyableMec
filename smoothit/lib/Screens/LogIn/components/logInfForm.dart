@@ -56,7 +56,7 @@ class _LogInFormState extends State<LogInForm> {
                 )),
             const SizedBox(height: 10),
             const Text(
-              'Mot de passe',
+              'Password',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             Container(
@@ -93,7 +93,7 @@ class _LogInFormState extends State<LogInForm> {
               width: 250,
               height: 40,
               child: RaisedButton(
-                child: const Text('Se connecter',
+                child: const Text('Log In',
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 color: kPrimaryColor,
                 shape: RoundedRectangleBorder(
@@ -103,8 +103,8 @@ class _LogInFormState extends State<LogInForm> {
                   if (_formKey.currentState.validate()) {
                     dynamic result = _auth.signIn(context, email, password);
                     if (result == null) {
-                      setState(() =>
-                          error = "Les champs remplies semblent invalides");
+                      setState(() => error =
+                          "Please supply a valid email or an email never used");
                     }
                   }
                 },

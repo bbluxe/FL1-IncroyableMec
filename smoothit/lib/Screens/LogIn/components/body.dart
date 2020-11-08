@@ -20,7 +20,7 @@ class _BodyState extends State<Body> {
         LogInForm(size: size),
         SizedBox(height: 20),
         Center(
-            child: Text('Pas encore inscrit ? Cliquez sur la graine',
+            child: Text('Not yet registered? Click on the seed',
                 style: TextStyle(fontSize: 16))),
         Center(
             child: IconButton(

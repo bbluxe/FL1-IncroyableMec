@@ -34,11 +34,11 @@ class _CustomTabBarState extends State<CustomTabBar> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Accueil',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: 'Profil',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

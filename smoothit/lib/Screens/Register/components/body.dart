@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: 80),
-                const Text("Veuillez entrez vos identifiants",
+                const Text("Please enter your credentials",
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 SizedBox(height: 30),
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -95,7 +95,7 @@ class _BodyState extends State<Body> {
                     width: 250,
                     height: 40,
                     child: RaisedButton(
-                      child: const Text("S'inscrire",
+                      child: const Text("Register",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                       color: kPrimaryColor,
                       shape: RoundedRectangleBorder(
