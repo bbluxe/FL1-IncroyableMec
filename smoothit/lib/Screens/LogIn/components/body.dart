@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
                 style: TextStyle(fontSize: 16))),
         Center(
             child: IconButton(
-                icon: Image.asset('images/seeds.png', width: 40),
+                icon: Image.asset('seeds.png', width: 40),
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RegisterView())))),
       ],

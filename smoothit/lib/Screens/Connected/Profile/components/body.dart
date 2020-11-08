@@ -19,7 +19,6 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   File _image;
-  String url = "";
   final picker = ImagePicker();
   final DatabaseService _database = DatabaseService();
 
@@ -54,9 +53,10 @@ class _BodyState extends State<Body> {
 
   Future downLoadPicture(uid) async {
     final url = await _database.loadImage(uid);
+    final image = await _database.urlToFile(url);
 
     setState(() {
-      this.url = url;
+      this._image = image;
     });
   }
 
@@ -75,11 +75,10 @@ class _BodyState extends State<Body> {
                   border: Border.all(color: kPrimaryColor, width: 2),
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: _image == null
-                        ? NetworkImage(url)
-                        : Image.file(_image).image,
-                  ))),
+                      fit: _image != null ? BoxFit.fill : BoxFit.none,
+                      image: _image != null
+                          ? Image.file(_image).image
+                          : AssetImage("noPhoto.png")))),
           SizedBox(height: 30),
           FloatingActionButton(
             backgroundColor: kPrimaryColor,

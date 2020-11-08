@@ -1,8 +1,10 @@
 // import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:smoothit/Screens/Connected/Home/components/Blender.dart';
 import 'package:smoothit/Screens/Connected/Home/components/FruitsInLines.dart';
 import 'package:smoothit/Screens/constant.dart';
+import 'package:dart_random_choice/dart_random_choice.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  AudioCache _audioController = AudioCache();
   // AudioCache _audioController = AudioCache();
   Map ingredients = {
     'Watermelon': 0,
@@ -25,6 +28,8 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    final Map<int, String> musics = {1: 'DESFRUITS.mp3', 2: 'TOUTDEDANS.mp3'};
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +53,33 @@ class _BodyState extends State<Body> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                     side: const BorderSide(color: kStrokeButtonColor)),
-                onPressed: () {}),
+                onPressed: () {
+                  _audioController.play(musics[randomChoice(musics.keys)]);
+                  var dialog = AlertDialog(
+                    title:
+                        Text("Sorry..", style: TextStyle(color: kPrimaryColor)),
+                    content: Text(
+                        "We didn't have the time to go further... but don't forget to enable your sound ",
+                        style: TextStyle(color: kPrimaryColor, fontSize: 16)),
+                    backgroundColor: kBackgroundColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "Let's go!",
+                        ),
+                        textColor: kPrimaryColor,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => dialog);
+                }),
           ),
         ],
       ),

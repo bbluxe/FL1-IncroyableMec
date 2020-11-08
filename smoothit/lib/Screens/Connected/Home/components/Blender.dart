@@ -21,7 +21,7 @@ class _BlenderState extends State<Blender> {
         Container(
           child: DragTarget(
             builder: (context, List<String> candidateData, rejectedData) {
-              return Image.asset("images/blender.png");
+              return Image.asset("blender.png");
             },
             onAccept: (data) {
               setState(() {

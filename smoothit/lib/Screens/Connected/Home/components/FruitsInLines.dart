@@ -11,17 +11,17 @@ class FruitsInLines extends StatefulWidget {
 
 class _FruitsInLinesState extends State<FruitsInLines> {
   final Map firstLinefruits = {
-    'images/watermelon.png': "Watermelon",
-    'images/pear.png': "Pear",
-    'images/strawberry.png': "Strawberry",
-    'images/apple.png': "Apple",
-    'images/coconut.png': "Coconut",
+    'watermelon.png': "Watermelon",
+    'pear.png': "Pear",
+    'strawberry.png': "Strawberry",
+    'apple.png': "Apple",
+    'coconut.png': "Coconut",
   };
   final Map secondLinefruits = {
-    'images/bananas.png': "Bananas",
-    'images/mango.png': "Mango",
-    'images/pineapple.png': "Pineapple",
-    'images/blueberry.png': "Blueberry",
+    'bananas.png': "Bananas",
+    'mango.png': "Mango",
+    'pineapple.png': "Pineapple",
+    'blueberry.png': "Blueberry",
   };
 
   @override

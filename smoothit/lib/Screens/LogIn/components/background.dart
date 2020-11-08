@@ -27,26 +27,26 @@ class Background extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset('images/bananas.png', width: 40),
-                          Image.asset('images/apple.png', width: 40),
-                          Image.asset('images/watermelon.png', width: 40),
-                          Image.asset('images/coconut.png', width: 40)
+                          Image.asset('bananas.png', width: 40),
+                          Image.asset('apple.png', width: 40),
+                          Image.asset('watermelon.png', width: 40),
+                          Image.asset('coconut.png', width: 40)
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset('images/blueberry.png', width: 40),
+                          Image.asset('blueberry.png', width: 40),
                           ScreenTitle(title: "Smooth'IT"),
-                          Image.asset('images/mango.png', width: 40),
+                          Image.asset('mango.png', width: 40),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset('images/strawberry.png', width: 40),
-                          Image.asset('images/pear.png', width: 40),
-                          Image.asset('images/pineapple.png', width: 40),
+                          Image.asset('strawberry.png', width: 40),
+                          Image.asset('pear.png', width: 40),
+                          Image.asset('pineapple.png', width: 40),
                         ],
                       ),
                     ],
