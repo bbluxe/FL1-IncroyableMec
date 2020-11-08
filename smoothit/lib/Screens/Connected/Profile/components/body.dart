@@ -1,16 +1,33 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smoothit/Models/user.dart';
 import 'package:smoothit/Screens/constant.dart';
+import 'package:smoothit/services/database.dart';
 
 class Body extends StatefulWidget {
+  final LocalUser user;
+
+  const Body({
+    @required this.user,
+  }) : super();
+
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
   File _image;
+  String url = "";
   final picker = ImagePicker();
+  final DatabaseService _database = DatabaseService();
+
+  @override
+  void initState() {
+    downLoadPicture(widget.user.uid);
+    super.initState();
+  }
 
   Future takePhoto() async {
     final pickedPhoto = await picker.getImage(source: ImageSource.camera);
@@ -35,8 +52,18 @@ class _BodyState extends State<Body> {
     });
   }
 
+  Future downLoadPicture(uid) async {
+    final url = await _database.loadImage(uid);
+
+    setState(() {
+      this.url = url;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<LocalUser>(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -48,10 +75,11 @@ class _BodyState extends State<Body> {
                   border: Border.all(color: kPrimaryColor, width: 2),
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      fit: _image != null ? BoxFit.fill : BoxFit.none,
-                      image: _image == null
-                          ? AssetImage("images/noPhoto.png")
-                          : Image.file(_image).image))),
+                    fit: BoxFit.fill,
+                    image: _image == null
+                        ? NetworkImage(url)
+                        : Image.file(_image).image,
+                  ))),
           SizedBox(height: 30),
           FloatingActionButton(
             backgroundColor: kPrimaryColor,
@@ -59,7 +87,6 @@ class _BodyState extends State<Body> {
             tooltip: 'Pick Image',
             child: Icon(Icons.add_a_photo),
           ),
-          SizedBox(height: 20),
           Container(
             width: 180,
             child: RaisedButton(
@@ -70,7 +97,22 @@ class _BodyState extends State<Body> {
                 onPressed: openGalery,
                 color: Colors.transparent,
                 elevation: 0.0),
-          )
+          ),
+          SizedBox(height: 40),
+          Container(
+            width: 250,
+            height: 40,
+            child: RaisedButton(
+                child: const Text('Upload my profile picture',
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                color: kPrimaryColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: const BorderSide(color: kStrokeButtonColor)),
+                onPressed: () {
+                  _database.uploadProfilPicture(this._image, user.uid);
+                }),
+          ),
         ],
       ),
     );

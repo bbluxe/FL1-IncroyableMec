@@ -108,6 +108,8 @@ class _BodyState extends State<Body> {
                           if (result == null) {
                             setState(() => error =
                                 'Please supply a valid email or an email never used');
+                          } else {
+                            Navigator.pop(context);
                           }
                         }
                       },

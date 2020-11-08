@@ -11,17 +11,13 @@ class AuthService {
   }
 
   Stream<LocalUser> get user {
-    return _auth
-        .authStateChanges()
-        // .map((User user) => _userFromFirebaseUser(user));
-        .map(_userFromFirebaseUser);
+    return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
   Future signIn(dynamic context, String email, String password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(result);
       User user = result.user;
       StatusAlert.show(
         context,
@@ -31,9 +27,6 @@ class AuthService {
         configuration: IconConfiguration(icon: Icons.done),
       );
       return _userFromFirebaseUser(user);
-    } on FirebaseAuthException catch (e) {
-      print(e.toString());
-      return null;
     } catch (e) {
       print(e.toString());
       return null;

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smoothit/Models/user.dart';
 import 'package:smoothit/Screens/Common/components/screen_title.dart';
 import 'package:smoothit/Screens/Connected/Profile/components/body.dart';
 import 'package:smoothit/Screens/constant.dart';
@@ -14,6 +16,8 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<LocalUser>(context);
+
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         backgroundColor: kBackgroundColor,
@@ -33,6 +37,6 @@ class _ProfileViewState extends State<ProfileView> {
             )
           ],
         ),
-        body: Body());
+        body: Body(user: user));
   }
 }
