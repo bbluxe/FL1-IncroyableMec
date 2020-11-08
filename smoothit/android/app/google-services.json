@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "343740556468",
+    "firebase_url": "https://smoothit-87f86.firebaseio.com",
+    "project_id": "smoothit-87f86",
+    "storage_bucket": "smoothit-87f86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343740556468:android:2987a68d121d0c42ae23e1",
+        "android_client_info": {
+          "package_name": "com.example.smoothit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343740556468-ofvi7lsnfal0448aobn7lblemucmt5pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_r6zDjKOlcCyCM0GHfbFxhNH4HCBfEvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343740556468-ofvi7lsnfal0448aobn7lblemucmt5pc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "343740556468-ja2oe1fh1ujot74jr5i4utvhfq3mfr1g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "srz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
