@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:smoothit/Screens/Common/components/screen_title.dart';
 import 'package:smoothit/Screens/Connected/Home/HomeView.dart';
 import 'package:smoothit/Screens/Connected/Profile/ProfileView.dart';
 import 'package:smoothit/Screens/constant.dart';

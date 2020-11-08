@@ -1,6 +1,4 @@
-import 'dart:ffi';
-
-import 'package:audioplayers/audio_cache.dart';
+// import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:smoothit/Screens/Connected/Home/components/Blender.dart';
 import 'package:smoothit/Screens/Connected/Home/components/FruitsInLines.dart';
@@ -12,8 +10,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  AudioCache _audioController = AudioCache();
-
+  // AudioCache _audioController = AudioCache();
   Map ingredients = {
     'Watermelon': 0,
     'Pear': 0,

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smoothit/Screens/Connected/Home/components/Blender.dart';
-import 'package:smoothit/Screens/constant.dart';
 
 class FruitsInLines extends StatefulWidget {
   const FruitsInLines({

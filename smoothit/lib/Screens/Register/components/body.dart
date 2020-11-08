@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smoothit/Screens/Common/components/screen_title.dart';
 import 'package:smoothit/Screens/constant.dart';
 import 'package:smoothit/services/auth.dart';
 
