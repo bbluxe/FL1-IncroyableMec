@@ -23,10 +23,10 @@ class Background extends StatelessWidget {
                   height: size.height / 3,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: <Widget>[
                           Image.asset('bananas.png', width: 40),
                           Image.asset('apple.png', width: 40),
                           Image.asset('watermelon.png', width: 40),
@@ -35,15 +35,15 @@ class Background extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: <Widget>[
                           Image.asset('blueberry.png', width: 40),
-                          ScreenTitle(title: "Smooth'IT"),
+                          const ScreenTitle(title: "Smooth'IT"),
                           Image.asset('mango.png', width: 40),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: <Widget>[
                           Image.asset('strawberry.png', width: 40),
                           Image.asset('pear.png', width: 40),
                           Image.asset('pineapple.png', width: 40),

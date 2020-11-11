@@ -9,7 +9,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String email = '';
   String password = '';
@@ -24,78 +24,83 @@ class _BodyState extends State<Body> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 80),
-                const Text("Please enter your credentials",
+                const SizedBox(height: 80),
+                const Text('Please enter your credentials',
                     style: TextStyle(color: Colors.white, fontSize: 20)),
-                SizedBox(height: 30),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text(
-                    'Email',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Container(
-                      width: size.width * 0.6,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          counterText: ' ',
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kPrimaryColor),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                        ),
-                        validator: (val) => val.isEmpty
-                            ? 'Email field seems to be empty'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        },
-                        style: const TextStyle(fontSize: 18),
-                        textAlign: TextAlign.start,
-                        autocorrect: false,
-                      )),
-                  const Text(
-                    'Mot de passe',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Container(
-                      width: size.width * 0.6,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          counterText: ' ',
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kPrimaryColor),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                        ),
-                        validator: (val) => val.length < 6
-                            ? 'Enter a password 6+ chars long'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                        },
-                        style: const TextStyle(fontSize: 18),
-                        textAlign: TextAlign.start,
-                        obscureText: true,
-                      )),
-                ]),
+                const SizedBox(height: 30),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const Text(
+                        'Email',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Container(
+                          width: size.width * 0.6,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              counterText: ' ',
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: kPrimaryColor),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                            ),
+                            validator: (String val) => val.isEmpty
+                                ? 'Email field seems to be empty'
+                                : null,
+                            onChanged: (String val) {
+                              setState(() => email = val);
+                            },
+                            style: const TextStyle(fontSize: 18),
+                            textAlign: TextAlign.start,
+                            autocorrect: false,
+                          )),
+                      const Text(
+                        'Mot de passe',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Container(
+                          width: size.width * 0.6,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              counterText: ' ',
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: kPrimaryColor),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                            ),
+                            validator: (String val) => val.length < 6
+                                ? 'Enter a password 6+ chars long'
+                                : null,
+                            onChanged: (String val) {
+                              setState(() => password = val);
+                            },
+                            style: const TextStyle(fontSize: 18),
+                            textAlign: TextAlign.start,
+                            obscureText: true,
+                          )),
+                    ]),
                 const SizedBox(height: 10),
                 Container(
-                    height: 60,
-                    width: size.width * 0.4,
-                    child: Text(error,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.red, fontSize: 16))),
+                  height: 60,
+                  width: size.width * 0.4,
+                  child: Text(
+                    error,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                ),
                 const SizedBox(height: 20),
                 Center(
                   child: Container(
                     width: 250,
                     height: 40,
                     child: RaisedButton(
-                      child: const Text("Register",
+                      child: const Text('Register',
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                       color: kPrimaryColor,
                       shape: RoundedRectangleBorder(
@@ -103,7 +108,7 @@ class _BodyState extends State<Body> {
                           side: const BorderSide(color: kStrokeButtonColor)),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          dynamic result =
+                          final dynamic result =
                               await _auth.signUp(context, email, password);
                           if (result == null) {
                             setState(() => error =

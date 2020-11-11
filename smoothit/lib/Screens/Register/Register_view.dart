@@ -10,7 +10,7 @@ class RegisterView extends StatelessWidget {
         resizeToAvoidBottomPadding: false,
         backgroundColor: kBackgroundColor,
         appBar: AppBar(
-          title: ScreenTitle(title: "Register"),
+          title: const ScreenTitle(title: 'Register'),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
         ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ScreenTitle extends StatefulWidget {
-  final String title;
-
   const ScreenTitle({
     @required this.title,
   }) : super();
+
+  final String title;
 
   @override
   _ScreenTitleState createState() => _ScreenTitleState();
@@ -17,7 +17,7 @@ class _ScreenTitleState extends State<ScreenTitle> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40),
       child: Text(widget.title,
-          style: TextStyle(color: Colors.white, fontSize: 40)),
+          style: const TextStyle(color: Colors.white, fontSize: 40)),
     );
   }
 }

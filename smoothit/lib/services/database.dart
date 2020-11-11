@@ -13,25 +13,26 @@ class DatabaseService {
     final StorageReference firebaseStorageRef =
         FirebaseStorage.instance.ref().child('profilPicture/$uid');
     final StorageUploadTask uploadTask = firebaseStorageRef.putFile(file);
-    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+    final StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
     taskSnapshot.ref.getDownloadURL().then(
-          (value) => print("Done: $value"),
+          (dynamic value) => print('Done: $value'),
         );
   }
 
-  Future<String> loadImage(String image) async {
-    final ref = FirebaseStorage.instance.ref().child('profilPicture/' + image);
-    var url = await ref.getDownloadURL();
+  Future<dynamic> loadImage(String image) async {
+    final StorageReference ref =
+        FirebaseStorage.instance.ref().child('profilPicture/' + image);
+    final dynamic url = await ref.getDownloadURL();
     return url;
   }
 
-  Future<File> urlToFile(String imageUrl) async {
-    var rng = new Random();
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-    File file = new File('$tempPath' + (rng.nextInt(100)).toString() + '.png');
+  Future<File> urlToFile(dynamic imageUrl) async {
+    final Random rng = Random();
+    final Directory tempDir = await getTemporaryDirectory();
+    final String tempPath = tempDir.path;
+    final File file = File(tempPath + rng.nextInt(100).toString() + '.png');
 
-    http.Response response = await http.get(imageUrl);
+    final http.Response response = await http.get(imageUrl);
     await file.writeAsBytes(response.bodyBytes);
     return file;
   }

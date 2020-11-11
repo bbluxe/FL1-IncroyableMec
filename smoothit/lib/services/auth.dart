@@ -14,17 +14,18 @@ class AuthService {
     return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
-  Future signIn(dynamic context, String email, String password) async {
+  Future<dynamic> signIn(
+      BuildContext context, String email, String password) async {
     try {
-      UserCredential result = await _auth.signInWithEmailAndPassword(
+      final UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      User user = result.user;
+      final User user = result.user;
       StatusAlert.show(
         context,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         title: 'Succès !',
         subtitle: "L'inscription s'est déroulée avec succès !",
-        configuration: IconConfiguration(icon: Icons.done),
+        configuration: const IconConfiguration(icon: Icons.done),
       );
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -33,17 +34,18 @@ class AuthService {
     }
   }
 
-  Future signUp(dynamic context, String email, String password) async {
+  Future<dynamic> signUp(
+      BuildContext context, String email, String password) async {
     try {
-      UserCredential result = await _auth.createUserWithEmailAndPassword(
+      final UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      User user = result.user;
+      final User user = result.user;
       StatusAlert.show(
         context,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         title: 'Succès !',
         subtitle: "L'inscription s'est déroulée avec succès !",
-        configuration: IconConfiguration(icon: Icons.done),
+        configuration: const IconConfiguration(icon: Icons.done),
       );
       return _userFromFirebaseUser(user);
     } on FirebaseAuthException catch (e) {
@@ -55,7 +57,7 @@ class AuthService {
     }
   }
 
-  Future signOut() async {
+  Future<dynamic> signOut() async {
     try {
       return await _auth.signOut();
     } catch (e) {

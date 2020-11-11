@@ -15,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
         resizeToAvoidBottomPadding: false,
         backgroundColor: kBackgroundColor,
         appBar: AppBar(
-          title: ScreenTitle(title: "Smooth'IT"),
+          title: const ScreenTitle(title: "Smooth'IT"),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
         ),

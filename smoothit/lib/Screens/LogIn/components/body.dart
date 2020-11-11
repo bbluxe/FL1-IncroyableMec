@@ -18,15 +18,17 @@ class _BodyState extends State<Body> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         LogInForm(size: size),
-        SizedBox(height: 20),
-        Center(
+        const SizedBox(height: 20),
+        const Center(
             child: Text('Not yet registered? Click on the seed',
                 style: TextStyle(fontSize: 16))),
         Center(
             child: IconButton(
                 icon: Image.asset('seeds.png', width: 40),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterView())))),
+                onPressed: () => Navigator.push<BuildContext>(
+                    context,
+                    MaterialPageRoute<BuildContext>(
+                        builder: (BuildContext context) => RegisterView())))),
       ],
     ));
   }

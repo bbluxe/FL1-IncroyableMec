@@ -7,7 +7,7 @@ import 'package:smoothit/Screens/LogIn/LogIn_view.dart';
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<LocalUser>(context);
+    final LocalUser user = Provider.of<LocalUser>(context);
     if (user == null) {
       return LogInView();
     } else {

@@ -7,11 +7,11 @@ import 'package:smoothit/Screens/constant.dart';
 import 'package:smoothit/services/database.dart';
 
 class Body extends StatefulWidget {
-  final LocalUser user;
-
   const Body({
     @required this.user,
   }) : super();
+
+  final LocalUser user;
 
   @override
   _BodyState createState() => _BodyState();
@@ -19,7 +19,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   File _image;
-  final picker = ImagePicker();
+  final ImagePicker picker = ImagePicker();
   final DatabaseService _database = DatabaseService();
 
   @override
@@ -28,8 +28,9 @@ class _BodyState extends State<Body> {
     super.initState();
   }
 
-  Future takePhoto() async {
-    final pickedPhoto = await picker.getImage(source: ImageSource.camera);
+  Future<dynamic> takePhoto() async {
+    final PickedFile pickedPhoto =
+        await picker.getImage(source: ImageSource.camera);
 
     setState(() {
       if (pickedPhoto != null) {
@@ -40,7 +41,7 @@ class _BodyState extends State<Body> {
     });
   }
 
-  Future openGalery() async {
+  Future<dynamic> openGalery() async {
     final PickedFile pickedPhoto =
         await picker.getImage(source: ImageSource.gallery);
 
@@ -51,53 +52,56 @@ class _BodyState extends State<Body> {
     });
   }
 
-  Future downLoadPicture(uid) async {
-    final url = await _database.loadImage(uid);
-    final image = await _database.urlToFile(url);
+  Future<dynamic> downLoadPicture(String uid) async {
+    final dynamic url = await _database.loadImage(uid);
+    final File image = await _database.urlToFile(url);
 
     setState(() {
-      this._image = image;
+      _image = image;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<LocalUser>(context);
+    final LocalUser user = Provider.of<LocalUser>(context);
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                  border: Border.all(color: kPrimaryColor, width: 2),
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: _image != null ? BoxFit.fill : BoxFit.none,
-                      image: _image != null
-                          ? Image.file(_image).image
-                          : AssetImage("noPhoto.png")))),
-          SizedBox(height: 30),
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              border: Border.all(color: kPrimaryColor, width: 2),
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: _image != null ? BoxFit.fill : BoxFit.none,
+                image: _image != null
+                    ? Image.file(_image).image
+                    : const AssetImage('noPhoto.png'),
+              ),
+            ),
+          ),
+          const SizedBox(height: 30),
           FloatingActionButton(
             backgroundColor: kPrimaryColor,
             onPressed: takePhoto,
             tooltip: 'Pick Image',
-            child: Icon(Icons.add_a_photo),
+            child: const Icon(Icons.add_a_photo),
           ),
           Container(
             width: 180,
             child: RaisedButton(
-                animationDuration: Duration(seconds: 0),
-                child: Text('Or click here to access your galery',
+                animationDuration: const Duration(seconds: 0),
+                child: const Text('Or click here to access your galery',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: kPrimaryColor, fontSize: 16)),
                 onPressed: openGalery,
                 color: Colors.transparent,
                 elevation: 0.0),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Container(
             width: 250,
             height: 40,
@@ -109,7 +113,7 @@ class _BodyState extends State<Body> {
                     borderRadius: BorderRadius.circular(18.0),
                     side: const BorderSide(color: kStrokeButtonColor)),
                 onPressed: () {
-                  _database.uploadProfilPicture(this._image, user.uid);
+                  _database.uploadProfilPicture(_image, user.uid);
                 }),
           ),
         ],

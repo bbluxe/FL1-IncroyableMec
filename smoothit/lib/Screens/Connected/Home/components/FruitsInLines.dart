@@ -10,30 +10,30 @@ class FruitsInLines extends StatefulWidget {
 }
 
 class _FruitsInLinesState extends State<FruitsInLines> {
-  final Map firstLinefruits = {
-    'watermelon.png': "Watermelon",
-    'pear.png': "Pear",
-    'strawberry.png': "Strawberry",
-    'apple.png': "Apple",
-    'coconut.png': "Coconut",
+  final Map<String, String> firstLinefruits = <String, String>{
+    'watermelon.png': 'Watermelon',
+    'pear.png': 'Pear',
+    'strawberry.png': 'Strawberry',
+    'apple.png': 'Apple',
+    'coconut.png': 'Coconut',
   };
-  final Map secondLinefruits = {
-    'bananas.png': "Bananas",
-    'mango.png': "Mango",
-    'pineapple.png': "Pineapple",
-    'blueberry.png': "Blueberry",
+  final Map<String, String> secondLinefruits = <String, String>{
+    'bananas.png': 'Bananas',
+    'mango.png': 'Mango',
+    'pineapple.png': 'Pineapple',
+    'blueberry.png': 'Blueberry',
   };
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
+      children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: firstLinefruits.keys.map((fruit) {
+              children: firstLinefruits.keys.map((String fruit) {
                 return Draggable<String>(
                   data: firstLinefruits[fruit],
                   child: Image.asset(fruit, width: 50),
@@ -46,7 +46,7 @@ class _FruitsInLinesState extends State<FruitsInLines> {
           padding: const EdgeInsets.symmetric(horizontal: 70),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: secondLinefruits.keys.map((fruit) {
+              children: secondLinefruits.keys.map((String fruit) {
                 return Draggable<String>(
                     data: secondLinefruits[fruit],
                     child: Image.asset(fruit, width: 50),

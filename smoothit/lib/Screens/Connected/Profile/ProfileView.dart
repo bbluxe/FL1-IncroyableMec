@@ -16,18 +16,18 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<LocalUser>(context);
+    final LocalUser user = Provider.of<LocalUser>(context);
 
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         backgroundColor: kBackgroundColor,
         appBar: AppBar(
-          title: ScreenTitle(title: "Profile"),
+          title: const ScreenTitle(title: 'Profile'),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           actions: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout,
                 color: Colors.red,
               ),

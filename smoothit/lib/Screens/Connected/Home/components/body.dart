@@ -12,9 +12,9 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  AudioCache _audioController = AudioCache();
+  final AudioCache _audioController = AudioCache();
   // AudioCache _audioController = AudioCache();
-  Map ingredients = {
+  Map<String, int> ingredients = <String, int>{
     'Watermelon': 0,
     'Pear': 0,
     'Strawberry': 0,
@@ -28,22 +28,25 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<int, String> musics = {1: 'DESFRUITS.mp3', 2: 'TOUTDEDANS.mp3'};
+    final Map<int, String> musics = <int, String>{
+      1: 'DESFRUITS.mp3',
+      2: 'TOUTDEDANS.mp3'
+    };
 
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(height: 40),
-              FruitsInLines(),
-              SizedBox(height: 40),
+            children: <Widget>[
+              const SizedBox(height: 40),
+              const FruitsInLines(),
+              const SizedBox(height: 40),
               Blender(ingredients: ingredients)
             ],
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Container(
             width: 150,
             child: RaisedButton(
@@ -55,10 +58,10 @@ class _BodyState extends State<Body> {
                     side: const BorderSide(color: kStrokeButtonColor)),
                 onPressed: () {
                   _audioController.play(musics[randomChoice(musics.keys)]);
-                  var dialog = AlertDialog(
-                    title:
-                        Text("Sorry..", style: TextStyle(color: kPrimaryColor)),
-                    content: Text(
+                  final AlertDialog dialog = AlertDialog(
+                    title: const Text('Sorry..',
+                        style: TextStyle(color: kPrimaryColor)),
+                    content: const Text(
                         "We didn't have the time to go further... but don't forget to enable your sound ",
                         style: TextStyle(color: kPrimaryColor, fontSize: 16)),
                     backgroundColor: kBackgroundColor,
@@ -66,7 +69,7 @@ class _BodyState extends State<Body> {
                         borderRadius: BorderRadius.circular(15)),
                     actions: <Widget>[
                       FlatButton(
-                        child: Text(
+                        child: const Text(
                           "Let's go!",
                         ),
                         textColor: kPrimaryColor,
@@ -76,7 +79,7 @@ class _BodyState extends State<Body> {
                       ),
                     ],
                   );
-                  showDialog(
+                  showDialog<BuildContext>(
                       context: context,
                       builder: (BuildContext context) => dialog);
                 }),
@@ -88,11 +91,11 @@ class _BodyState extends State<Body> {
       floatingActionButton: FloatingActionButton(
           tooltip: 'Refresh ingredients',
           backgroundColor: kPrimaryColor,
-          child: Icon(Icons.refresh),
+          child: const Icon(Icons.refresh),
           onPressed: () {
             setState(() {
               ingredients.clear();
-              ingredients = {
+              ingredients = <String, int>{
                 'Watermelon': 0,
                 'Pear': 0,
                 'Strawberry': 0,

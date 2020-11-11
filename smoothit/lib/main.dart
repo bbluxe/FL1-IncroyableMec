@@ -6,7 +6,7 @@ import 'package:smoothit/Screens/constant.dart';
 import 'package:smoothit/Screens/wrapper.dart';
 import 'package:smoothit/services/auth.dart';
 
-void main() async {
+Future<dynamic> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
